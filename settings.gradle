@@ -21,7 +21,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Health Connect Codelab"
+rootProject.name = "MAPD721_assignment2"
 include ':start'
 include ':finished'
 
