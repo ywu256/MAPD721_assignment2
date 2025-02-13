@@ -32,6 +32,7 @@ enum class Screen(val route: String, val titleId: Int, val hasMenuItem: Boolean 
   ExerciseSessions("exercise_sessions", R.string.exercise_sessions),
   ExerciseSessionDetail("exercise_session_detail", R.string.exercise_session_detail, false),
   InputReadings("input_readings", R.string.input_readings),
+  HeartRate("heart_rate", R.string.record_heart_rate),
   DifferentialChanges("differential_changes", R.string.differential_changes),
   PrivacyPolicy("privacy_policy", R.string.privacy_policy, false)
 }

@@ -132,6 +132,9 @@
   <string name="differential_changes_type_distance">Distance</string>
   <string name="differential_changes_type_weight">Weight</string>
 
+  <!-- Heart Rate screen -->
+  <string name="record_heart_rate">Record heart rate</string>
+
   <!-- Health Connect settings -->
   <string name="settings">Settings</string>
 </resources>
