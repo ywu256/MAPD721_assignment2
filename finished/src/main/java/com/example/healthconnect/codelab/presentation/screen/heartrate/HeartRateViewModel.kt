@@ -60,7 +60,7 @@ class HeartRateViewModel(private val healthConnectManager: HealthConnectManager)
                     )
                 )
                 healthConnectManager.writeHeartRateRecord(record)
-                readHeartRateData()
+//                readHeartRateData()
             }
         }
     }
