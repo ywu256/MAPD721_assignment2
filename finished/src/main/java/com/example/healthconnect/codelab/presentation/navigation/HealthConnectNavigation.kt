@@ -36,6 +36,9 @@ import com.example.healthconnect.codelab.presentation.screen.exercisesession.Exe
 import com.example.healthconnect.codelab.presentation.screen.exercisesessiondetail.ExerciseSessionDetailScreen
 import com.example.healthconnect.codelab.presentation.screen.exercisesessiondetail.ExerciseSessionDetailViewModel
 import com.example.healthconnect.codelab.presentation.screen.exercisesessiondetail.ExerciseSessionDetailViewModelFactory
+import com.example.healthconnect.codelab.presentation.screen.heartrate.HeartRateScreen
+import com.example.healthconnect.codelab.presentation.screen.heartrate.HeartRateViewModel
+import com.example.healthconnect.codelab.presentation.screen.heartrate.HeartRateViewModelFactory
 import com.example.healthconnect.codelab.presentation.screen.inputreadings.InputReadingsScreen
 import com.example.healthconnect.codelab.presentation.screen.inputreadings.InputReadingsViewModel
 import com.example.healthconnect.codelab.presentation.screen.inputreadings.InputReadingsViewModelFactory
@@ -180,6 +183,33 @@ fun HealthConnectNavigation(
         onPermissionsResult = {
           viewModel.initialLoad()
         },
+        onPermissionsLaunch = { values ->
+          permissionsLauncher.launch(values)
+        }
+      )
+    }
+    composable(Screen.HeartRate.route) {
+      val viewModel: HeartRateViewModel = viewModel(
+        factory = HeartRateViewModelFactory(
+          healthConnectManager = healthConnectManager
+        )
+      )
+      val permissions = viewModel.permissions
+      val onPermissionsResult = { viewModel.initialLoad() }
+      val permissionsLauncher =
+        rememberLauncherForActivityResult(viewModel.permissionsLauncher) {
+          onPermissionsResult()
+        }
+      HeartRateScreen(
+        permissions = permissions,
+        permissionsGranted = viewModel.permissionsGranted.value,
+        heartRateReadings = viewModel.heartRateReadings.value,
+        uiState = viewModel.uiState,
+        onInsertClick = { heartRate, dateTime ->
+          viewModel.insertHeartRate(heartRate, dateTime)
+        },
+        onError = { /* Handle error */ },
+        onPermissionsResult = { viewModel.initialLoad() },
         onPermissionsLaunch = { values ->
           permissionsLauncher.launch(values)
         }
