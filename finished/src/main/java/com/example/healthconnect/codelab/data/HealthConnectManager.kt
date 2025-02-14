@@ -213,6 +213,25 @@ class HealthConnectManager(private val context: Context) {
   }
 
   /**
+   * TODO: Write [HeartRateRecord].
+   */
+  suspend fun writeHeartRateRecord(record: HeartRateRecord) {
+    healthConnectClient.insertRecords(listOf(record))
+  }
+
+  /**
+   * TODO: Read [HeartRateRecord].
+   */
+  suspend fun readHeartRateData(startTime: Instant, endTime: Instant): List<HeartRateRecord> {
+    val response = healthConnectClient.readRecords(
+      ReadRecordsRequest(
+        recordType = HeartRateRecord::class,
+        timeRangeFilter = TimeRangeFilter.between(startTime, endTime)
+      )
+    )
+    return response.records
+  }
+  /**
    * TODO: Reads aggregated data and raw data for selected data types, for a given [ExerciseSessionRecord].
    */
   suspend fun readAssociatedSessionData(
