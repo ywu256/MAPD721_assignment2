@@ -172,11 +172,6 @@ fun HeartRateScreen(
 
                 item {
                     Spacer(modifier = Modifier.height(24.dp))
-//                    Text(
-//                        text = "About",
-//                        fontSize = 24.sp,
-//                        color = MaterialTheme.colors.primary
-//                    )
                     Text("Student Name: Yu-Ling Wu")
                     Text("Student ID: 301434538")
                 }
